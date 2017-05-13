@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/E:/xampp/htdocs/practioners/module/Admin/view/layout/layout-admin.phtml</file>
+            <file>file:/E:/xampp/htdocs/practioners/module/Application/config/module.config.php</file>
+            <file>file:/E:/xampp/htdocs/practioners/module/Admin/config/module.config.php</file>
+            <file>file:/E:/xampp/htdocs/practioners/module/Admin/src/Controller/UserController.php</file>
+            <file>file:/E:/xampp/htdocs/practioners/module/Admin/view/admin/dashboard/index.phtml</file>
+            <file>file:/E:/xampp/htdocs/practioners/module/Admin/src/Controller/DashboardController.php</file>
+            <file>file:/E:/xampp/htdocs/practioners/module/Application/view/layout/layout.phtml</file>
+        </group>
+    </open-files>
 </project-private>

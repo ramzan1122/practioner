@@ -1,0 +1,75 @@
+<?= $this->doctype() ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle('ZF Skeleton Application')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+        <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
+            ->prependStylesheet($this->basePath('admin/bootstrap/css/bootstrap.min.css'))
+            ->prependStylesheet($this->basePath('admin/bootstrap/css/font-awesome.min.css'))
+            ->prependStylesheet($this->basePath('admin/bootstrap/css/ionicons.min.css'))
+            ->prependStylesheet($this->basePath('admin/dist/css/AdminLTE.min.css'))
+            ->prependStylesheet($this->basePath('admin/dist/css/skins/skin-blue.min.css'))
+        ?>
+        <!-- Scripts -->
+        <?= $this->headScript()
+            ->prependFile($this->basePath('admin/plugins/jQuery/jquery-2.2.3.min.js'))
+            ->prependFile($this->basePath('admin/bootstrap/js/bootstrap.min.js'))
+            ->prependFile($this->basePath('admin/dist/js/app.min.js'))
+        ?>
+    </head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    Admin Panel
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+      <?= $this->content ?>
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery 2.2.3 -->
+<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="../../plugins/iCheck/icheck.min.js"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
+  });
+</script>
+</body>
+</html>

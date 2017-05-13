@@ -1,0 +1,50 @@
+<?php
+$this->headTitle('Sign in');
+//$this->mainMenu()->setActiveItemId('login');
+$form->get('email')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=>'Email address',
+    'required' => true,
+    'autofocus' => true
+    ])
+    ->setLabelAttributes([
+        'class' => 'sr-only'
+    ]);
+$form->get('password')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=>'Password',
+    'required' => true,
+    ])
+    ->setLabelAttributes([
+        'class' => 'sr-only'
+    ]);
+?>
+
+<div class="login-box-body">
+    <p class="login-box-msg">Sign in to start your session</p>
+        <form class="form-signin" method="post">
+            <h2 class="form-signin-heading"></h2>
+            <?php if ($isLoginError): ?>
+            <div class="alert alert-warning" role="alert">
+                Incorrect login and/or password. 
+                <a href="<?= $this->url('reset-password') ?>">Forgot password?</a>
+            </div>
+            <?php endif; ?>
+            <div class="form-group has-feedback">
+            <?= $this->formLabel($form->get('email')); ?>
+            <?= $this->formElement($form->get('email')); ?><span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>  
+            <div class="form-group has-feedback">
+            <?= $this->formLabel($form->get('password')); ?>
+            <?= $this->formElement($form->get('password')); ?><span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>  
+            <div class="checkbox">
+                <label>
+                    <?= $this->formElement($form->get('remember_me')); ?> Remember me
+                </label>
+            </div>
+            <?= $this->formElement($form->get('redirect_url')); ?>
+            <?= $this->formElement($form->get('csrf')) ?>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+</div>

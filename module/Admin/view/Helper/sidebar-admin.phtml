@@ -1,0 +1,42 @@
+<?php 
+
+//$path = $this->_request->getRequestUri();
+//$parts = explode('/', $path);
+//$lastPathComponent = end($parts);
+ $controller = $controllerName;
+ $openDashboard="";
+ if($controller=="dashboard"){
+     $openDashboard = 'active';
+ }elseif($controller=="user"){
+     $openUser = 'active';
+ }
+     
+?>
+<aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+      <!-- Sidebar user panel (optional) -->
+
+
+
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu">
+        <!-- Optionally, you can add icons to the links -->
+        <li class="<?php echo $openDashboard ?>"><a href="<?= $this->url('dashboard'); ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li class="treeview <?php echo $openUser ?>">
+          <a href="#"><i class="fa fa-user"></i> <span>Users</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?= $this->url('users'); ?>">Manage Users</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>

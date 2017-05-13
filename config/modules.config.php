@@ -11,6 +11,7 @@
  * This should be an array of module namespaces used in the application.
  */
 return [
+    'Zend\Mvc\Plugin\FlashMessenger',
     'Zend\Paginator',
     'Zend\Session',
     'DoctrineModule',
@@ -24,5 +25,5 @@ return [
     'DoctrineModule',
     'DoctrineORMModule',
     'Application',
-    'User',
+    'Admin',
 ];
