@@ -5,10 +5,10 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 namespace AdminTest\Controller;
-use Admin\Controller\UserController;
+use Admin\Controller\CategoryController;
 use Zend\Stdlib\ArrayUtils;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
-class UserControllerTest extends AbstractHttpControllerTestCase
+class CategoryControllerTest extends AbstractHttpControllerTestCase
 {
     public function setUp()
     {
@@ -28,8 +28,8 @@ class UserControllerTest extends AbstractHttpControllerTestCase
         $this->dispatch('/', 'GET');
         $this->assertResponseStatusCode(200);
         $this->assertModuleName('admin');
-        $this->assertControllerName(UserController::class); // as specified in router's controller name alias
-        $this->assertControllerClass('UserController');
+        $this->assertControllerName(CategoryController::class); // as specified in router's controller name alias
+        $this->assertControllerClass('CategoryController');
         $this->assertMatchedRouteName('home');
     }
     public function testIndexActionViewModelTemplateRenderedWithinLayout()

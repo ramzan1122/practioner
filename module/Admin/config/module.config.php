@@ -71,6 +71,21 @@ return [
                     ],
                 ],
             ],
+            'category' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/admin/category[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[a-zA-Z0-9_-]*',
+                    ],
+                    'defaults' => [
+                        'controller'    => Controller\CategoryController::class,
+                        'action'        => 'index',
+                    ],
+                ],
+            ],            
+            
             'dashboard' => [
                 'type' => Segment::class,
                 'options' => [
@@ -86,7 +101,8 @@ return [
     'controllers' => [
         'factories' => [
             Controller\AuthController::class => Controller\Factory\AuthControllerFactory::class,
-            Controller\UserController::class => Controller\Factory\UserControllerFactory::class,  
+            Controller\UserController::class => Controller\Factory\UserControllerFactory::class, 
+            Controller\CategoryController::class => Controller\Factory\CategoryControllerFactory::class,
             Controller\DashboardController::class => InvokableFactory::class,
         ],
     ],
@@ -101,6 +117,13 @@ return [
                 // Give access to "index", "add", "edit", "view", "changePassword" actions to authorized users only.
                 ['actions' => ['index', 'add', 'edit', 'view', 'changePassword'], 'allow' => '@']
             ],
+            Controller\CategoryController::class => [
+                // Give access to "resetPassword", "message" and "setPassword" actions
+                // to anyone.
+                ['actions' => ['resetPassword', 'message', 'setPassword'], 'allow' => '*'],
+                // Give access to "index", "add", "edit", "view", "changePassword" actions to authorized users only.
+                ['actions' => ['index', 'add', 'edit', 'view', 'changePassword'], 'allow' => '@']
+            ],
         ]
     ],
     'service_manager' => [
@@ -109,6 +132,7 @@ return [
             Service\AuthAdapter::class => Service\Factory\AuthAdapterFactory::class,
             Service\AuthManager::class => Service\Factory\AuthManagerFactory::class,
             Service\UserManager::class => Service\Factory\UserManagerFactory::class,
+            Service\CategoryManager::class => Service\Factory\CategoryManagerFactory::class,
         ],
     ],
     'view_manager' => [
