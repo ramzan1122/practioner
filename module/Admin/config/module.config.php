@@ -4,7 +4,7 @@ use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Zend\ServiceManager\Factory\InvokableFactory;
-define("ADMIN_PER_PAGE",1);
+define("ADMIN_PER_PAGE",3);
 return [
     'router' => [
         'routes' => [
