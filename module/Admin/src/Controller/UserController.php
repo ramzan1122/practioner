@@ -7,6 +7,10 @@ use Admin\Form\UserForm;
 use Admin\Form\PasswordChangeForm;
 use Admin\Form\PasswordResetForm;
 use Zend\Mvc\MvcEvent;
+
+use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
+use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
+use Zend\Paginator\Paginator;
 /**
  * This controller is responsible for user management (adding, editing, 
  * viewing users and changing user's password).
@@ -50,10 +54,18 @@ class UserController extends AbstractActionController
      */
     public function indexAction() 
     {
-        $users = $this->entityManager->getRepository(User::class)
-                ->findBy([], ['id'=>'ASC']);
+       
+        $page = $this->params()->fromQuery('page', 1);
+        $users_query = $this->entityManager->getRepository(User::class)
+                ->getAllUsers();
+        
+        $adapter = new DoctrineAdapter(new ORMPaginator($users_query, false));
+        $paginator = new Paginator($adapter);
+        $paginator->setDefaultItemCountPerPage(ADMIN_PER_PAGE);        
+        $paginator->setCurrentPageNumber($page);
+        
         return new ViewModel([
-            'users' => $users
+            'users' => $paginator
         ]);
     } 
     

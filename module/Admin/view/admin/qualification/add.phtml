@@ -1,0 +1,55 @@
+<?php
+$this->headTitle('Add Qualification');
+//$this->mainMenu()->setActiveItemId('users');
+//$this->pageBreadcrumbs()->setItems([
+//            'Home'=>$this->url('home'),
+//            'Manage Users'=>$this->url('users'),
+//            'Add User'=>$this->url('users', ['action'=>'add'])
+//            ]);
+$form->get('qualification')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=>'MBBS'
+    ]);
+
+$form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
+$form->prepare();
+?>
+
+<section class="content-header col-md-offset-1">
+<h1>Add Qualification</h1>
+
+<p>
+    Please fill out the following form and click the <i>Create</i> button.
+</p>
+</section>
+
+<section class="content">
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Quick Example</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+        <?= $this->form()->openTag($form); ?>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('qualification')); ?>
+            <?= $this->formElement($form->get('qualification')); ?>
+            <?= $this->formElementErrors($form->get('qualification')); ?>                  
+        </div>
+        
+        
+        <?= $this->formElement($form->get('submit')); ?>
+        
+        <?= $this->form()->closeTag(); ?>
+            </div>
+          </div>
+
+        </div>
+   
+</div>   
+</section>

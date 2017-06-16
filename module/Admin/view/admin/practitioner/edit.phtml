@@ -1,0 +1,117 @@
+<?php
+$this->headTitle('Edit User');
+
+$form->get('email')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'name@example.com'
+    ]);
+$form->get('first_name')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Doe'
+    ]);
+$form->get('last_name')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'John'
+    ]);
+$form->get('language')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'English'
+    ]);
+$form->get('phone_number')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'000-000-000'
+    ]);
+$form->get('gender')->setAttributes([
+    'class'=>''
+    ]);
+$form->get('address')->setAttributes([
+    'class'=>'form-control'
+    ]);
+$form->get('overview')->setAttributes([
+    'class'=>'form-control'
+    ]);
+$form->get('qualification')->setAttributes([
+    'class'=>'form-control'
+    ]);
+$form->prepare();
+?>
+<section class="content-header col-md-offset-1">
+<h1>Edit User <?= $this->escapeHtml($practitioner->getEmail()) ?></h1>
+</section>
+
+<section class="content">
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Quick Example</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+        <?= $this->form()->openTag($form); ?>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('email')); ?>
+            <?= $this->formElement($form->get('email')); ?>
+            <?= $this->formElementErrors($form->get('email')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('first_name')); ?>
+            <?= $this->formElement($form->get('first_name')); ?>
+            <?= $this->formElementErrors($form->get('first_name')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('last_name')); ?>
+            <?= $this->formElement($form->get('last_name')); ?>
+            <?= $this->formElementErrors($form->get('last_name')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('language')); ?>
+            <?= $this->formElement($form->get('language')); ?>
+            <?= $this->formElementErrors($form->get('language')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('phone_number')); ?>
+            <?= $this->formElement($form->get('phone_number')); ?>
+            <?= $this->formElementErrors($form->get('phone_number')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('gender')); ?>
+            <?= $this->formElement($form->get('gender')); ?>
+            <?= $this->formElementErrors($form->get('gender')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('address')); ?>
+            <?= $this->formElement($form->get('address')); ?>
+            <?= $this->formElementErrors($form->get('address')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('overview')); ?>
+            <?= $this->formElement($form->get('overview')); ?>
+            <?= $this->formElementErrors($form->get('overview')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('qualification')); ?>
+            <?= $this->formElement($form->get('qualification')); ?>
+            <?= $this->formElementErrors($form->get('qualification')); ?>
+        </div>
+
+        <?= $this->formElement($form->get('submit')); ?>
+
+        <?= $this->form()->closeTag(); ?>           </div>
+          </div>
+
+        </div>
+
+</div>
+</section>

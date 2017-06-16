@@ -5,8 +5,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * This class represents a registered category.
- * @ORM\Entity()
- * @ORM\Table(name="category")
+ * @ORM\Entity(repositoryClass="\Admin\Repository\CategoryRepository")
+ * @ORM\Table(name="categories")
  */
 class Category 
 {

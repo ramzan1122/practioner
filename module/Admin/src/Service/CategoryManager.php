@@ -32,7 +32,7 @@ class CategoryManager {
         if ($this->checkCategoryExists($data['title'])) {
             throw new \Exception("Category with title address " . $data['$title'] . " already exists");
         }
-
+        
         // Create new Category entity.
         $category = new Category();
         $category->setTitle($data['title']);
@@ -84,4 +84,7 @@ class CategoryManager {
         $this->entityManager->flush();
     }
 
+    
+     
+    
 }

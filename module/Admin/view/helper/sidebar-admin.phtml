@@ -11,6 +11,15 @@
      $openUser = 'active';
  }elseif($controller=="category"){
      $openCategory = 'active';
+ }elseif($controller=="qualification"){
+     $openQualification = 'active';
+ }elseif($controller=="specialities"){
+     $openSpeciality = 'active';
+ }
+ elseif($controller=="practitioner"){
+     $openPractioner = 'active';
+ }elseif($controller=="practice"){
+     $openPractice = 'active';
  }
 ?>
 <aside class="main-sidebar">
@@ -45,7 +54,51 @@
           <ul class="treeview-menu">
             <li><a href="<?= $this->url('category'); ?>">Manage Categories</a></li>
           </ul>
-        </li>        
+        </li>  
+        <li class="treeview <?php echo $openQualification ?>">
+          <a href="#"><i class="fa fa-caret-square-o-down"></i> <span>Practioner Qualifications</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?= $this->url('qualification'); ?>">Manage Qualifications</a></li>
+          </ul>
+        </li>  
+        
+        <li class="treeview <?php echo $openSpeciality ?>">
+          <a href="#"><i class="fa fa-caret-square-o-down"></i> <span>Practioner , Practice Speciality</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?= $this->url('specialities'); ?>">Manage Specialities</a></li>
+          </ul>
+        </li> 
+        <li class="treeview <?php echo $openPractioner ?>">
+          <a href="#"><i class="fa fa-caret-square-o-down"></i> <span>Practioners</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?= $this->url('practitioner'); ?>">Manage Practioners</a></li>
+          </ul>
+        </li> 
+        
+        <li class="treeview <?php echo $openPractice ?>">
+          <a href="#"><i class="fa fa-caret-square-o-down"></i> <span>Practice's</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?= $this->url('practice'); ?>">Manage Practice's</a></li>
+          </ul>
+        </li> 
+        
+        
       </ul>
       <!-- /.sidebar-menu -->
     </section>

@@ -1,0 +1,147 @@
+<?php
+$this->headTitle('Practitioner');
+//$this->mainMenu()->setActiveItemId('practs');
+//$this->pageBreadcrumbs()->setItems([
+//            'Home'=>$this->url('home'),
+//            'Manage practs'=>$this->url('practs'),
+//            ]);
+?>
+
+
+<?php
+$this->headTitle('Practitioner');
+//$this->mainMenu()->setActiveItemId('practitioner');
+//$this->pageBreadcrumbs()->setItems([
+//            'Home'=>$this->url('home'),
+//            'Manage practs'=>$this->url('practitioner'),
+//            ]);
+?>
+
+
+
+
+<section class="content-header">
+<h1>Manage Practitioner</h1>
+<ol class="breadcrumb">
+<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+<li class="active">Here</li>
+</ol>
+</section>
+
+
+<div class="col-sm-12 modal-header">
+<a type="button" href="<?= $this->url('practitioner', ['action' => 'add']); ?>" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Practitioner</a>
+</div>
+
+
+<section class="content">
+<div class="row">
+
+<div class="col-xs-12">
+<div class="box">
+<div class="box-header">
+<h3 class="box-title">All Practitioner</h3>
+</div>
+<!-- /.box-header -->
+<div class="box-body">
+<div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+
+<thead>
+    <tr role="row">
+        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">ID</th>
+
+        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Email</th>
+
+        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">First Name</th>
+
+        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Last Name</th>
+
+        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Language</th>
+
+        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Phone Number</th>
+
+        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Gender</th>
+
+        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Address</th>
+
+        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Overview</th>
+
+        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Qualification</th>
+
+        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Avatar</th>
+    </tr>
+</thead>
+            <tbody>
+
+
+            <?php foreach ($practitioners as $pract): ?>
+
+                        <tr>
+                        <td><?= $this->escapeHtml($pract->getId()); ?></td>
+                        <td>
+                        <a href="<?= $this->url('practitioner', ['action'=>'view', 'id'=>$pract->getId()]); ?>">
+                        <?= $this->escapeHtml($pract->getEmail()); ?>
+                        </a>
+                        </td>
+                        <td><?= $this->escapeHtml($pract->getFirstName()); ?></a>
+                        </td>
+                        <td><?= $this->escapeHtml($pract->getLastName()); ?></td>
+                        <td><?= $this->escapeHtml($pract->getLanguage()); ?></td>
+                        <td><?= $this->escapeHtml($pract->getPhoneNumber()); ?></td>
+                        <td><?= $this->escapeHtml($pract->getGender()); ?></td>
+                        <td><?= $this->escapeHtml($pract->getAddress()); ?></td>
+                        <td><?= $this->escapeHtml($pract->getOverview()); ?></td>
+                        <td><?= $this->escapeHtml($pract->getQualification()); ?></td>
+                        <td><?= $this->escapeHtml($pract->getAvatar()); ?></td>
+                        <td>
+                        <a class="btn btn-info" href="<?= $this->url('practitioner',
+                        ['action'=>'edit', 'id'=>$pract->getId()]); ?>">
+                        <span class="glyphicon glyphicon-pencil" ></span> Edit
+                        </a>
+                        <button onclick="_delete('practitioner', '<?php echo $pract->getId() ?>')" class="btn btn-danger" href="#">
+                        <span class="glyphicon glyphicon-trash" ></span> Delete
+                        </button>
+                        </td>
+                        </tr>
+
+            <?php endforeach; ?>
+
+            </tbody>
+  </table>
+             <div class="row col-sm-12" style="text-align: right">  
+                <?= $this->paginationControl($practitioners,
+                'Sliding',
+                'admin/partial/paginator', 
+                array('route' => 'practitioner')); ?> 
+             </div>
+        
+        
+        </div></div>
+
+</div>
+<!-- /.box-body -->
+</div>
+<!-- /.box -->
+
+
+<!-- /.box -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</section>
+<script>
+function _delete(controller, id) {
+var result = confirm("Want to delete?");
+if (result) {
+$.ajax({
+url: "<?= $this->url('practitioner', ['action' => 'delete']); ?>",
+async: false,
+method: 'POST',
+data: {id: id},
+success: function (result) {
+
+}});
+}
+}
+</script>

@@ -1,0 +1,131 @@
+<?php
+$this->headTitle('Edit Practice');
+
+$form->get('practice_name')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'XYZ Clinic'
+    ]);
+$form->get('description')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Description'
+    ]);
+$form->get('address')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Practice Address'
+    ]);
+$form->get('state')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Practice Address',
+    'id' => 'state'
+    ]);
+$form->get('suburb')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Practice Address',
+    'id' => 'suburb'
+    ]);
+$form->get('postal_code')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Practice Address',
+    'id' => 'postal_code'
+    ]);
+$form->get('languages')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'English'
+    ]);
+$form->get('phone_number')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'000-000-000'
+    ]);
+$form->get('latitude')->setAttributes([
+    'class'=>''
+    ])->setValue('34242442');
+$form->get('longitude')->setAttributes([
+    'class'=>''
+    ])->setValue('34242442');
+
+$form->get('save')->setAttributes(['class'=>'btn btn-primary']);
+$form->prepare();
+?>
+<section class="content-header col-md-offset-1">
+<h1>Edit User <?= $this->escapeHtml($practice->getPracticeName()) ?></h1>
+</section>
+
+<section class="content">
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Quick Example</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+        <?= $this->form()->openTag($form); ?>
+
+       <div class="form-group">
+            <?= $this->formLabel($form->get('practice_name')); ?>
+            <?= $this->formElement($form->get('practice_name')); ?>
+            <?= $this->formElementErrors($form->get('practice_name')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('description')); ?>
+            <?= $this->formElement($form->get('description')); ?>
+            <?= $this->formElementErrors($form->get('description')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('address')); ?>
+            <?= $this->formElement($form->get('address')); ?>
+            <?= $this->formElementErrors($form->get('address')); ?>
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('state')); ?>
+            <?= $this->formElement($form->get('state')); ?>
+            <?= $this->formElementErrors($form->get('state')); ?>
+        </div>    
+                
+        <div class="form-group">
+            <?= $this->formLabel($form->get('suburb')); ?>
+            <?= $this->formElement($form->get('suburb')); ?>
+            <?= $this->formElementErrors($form->get('suburb')); ?>
+        </div>       
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('postal_code')); ?>
+            <?= $this->formElement($form->get('postal_code')); ?>
+            <?= $this->formElementErrors($form->get('postal_code')); ?>
+        </div>        
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('languages')); ?>
+            <?= $this->formElement($form->get('languages')); ?>
+            <?= $this->formElementErrors($form->get('languages')); ?>
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('phone_number')); ?>
+            <?= $this->formElement($form->get('phone_number')); ?>
+            <?= $this->formElementErrors($form->get('phone_number')); ?>
+        </div>
+
+        
+
+            <?= $this->formElement($form->get('latitude')); ?>
+            <?= $this->formElementErrors($form->get('latitude')); ?>
+                
+            <?= $this->formElement($form->get('longitude')); ?>
+            <?= $this->formElementErrors($form->get('longitude')); ?>
+
+           
+        <?= $this->formElement($form->get('save')); ?>
+
+        <?= $this->form()->closeTag(); ?>           </div>
+          </div>
+
+        </div>
+
+</div>
+</section>

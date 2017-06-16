@@ -4,6 +4,7 @@ use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Zend\ServiceManager\Factory\InvokableFactory;
+define("ADMIN_PER_PAGE",1);
 return [
     'router' => [
         'routes' => [
@@ -85,7 +86,72 @@ return [
                     ],
                 ],
             ],            
-            
+            'get-categories' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route'    => '/admin/get-categories',
+                    'defaults' => [
+                        'controller' => Controller\CategoryController::class,
+                        'action'     => 'getCategories',
+                    ],
+                ],
+            ], 
+            'qualification' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/admin/qualification[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[a-zA-Z0-9_-]*',
+                    ],
+                    'defaults' => [
+                        'controller'    => Controller\QuallificationController::class,
+                        'action'        => 'index',
+                    ],
+                ],
+            ],
+            'specialities' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/admin/specialities[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[a-zA-Z0-9_-]*',
+                    ],
+                    'defaults' => [
+                        'controller'    => Controller\SpecialitiesController::class,
+                        'action'        => 'index',
+                    ],
+                ],
+            ],
+            'practitioner' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/admin/practitioner[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[a-zA-Z0-9_-]*',
+                    ],
+                    'defaults' => [
+                        'controller'    => Controller\PractitionerController::class,
+                        'action'        => 'index',
+                    ],
+                ],
+            ],
+            'practice' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/admin/practice[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[a-zA-Z0-9_-]*',
+                    ],
+                    'defaults' => [
+                        'controller'    => Controller\PracticeController::class,
+                        'action'        => 'index',
+                    ],
+                ],
+            ],
             'dashboard' => [
                 'type' => Segment::class,
                 'options' => [
@@ -103,6 +169,10 @@ return [
             Controller\AuthController::class => Controller\Factory\AuthControllerFactory::class,
             Controller\UserController::class => Controller\Factory\UserControllerFactory::class, 
             Controller\CategoryController::class => Controller\Factory\CategoryControllerFactory::class,
+            Controller\QuallificationController::class => Controller\Factory\QualificationControllerFactory::class,
+            Controller\SpecialitiesController::class => Controller\Factory\SpecialitiesControllerFactory::class,
+            Controller\PractitionerController::class => Controller\Factory\PractitionerControllerFactory::class,
+            Controller\PracticeController::class => Controller\Factory\PracticeControllerFactory::class,
             Controller\DashboardController::class => InvokableFactory::class,
         ],
     ],
@@ -124,6 +194,13 @@ return [
                 // Give access to "index", "add", "edit", "view", "changePassword" actions to authorized users only.
                 ['actions' => ['index', 'add', 'edit', 'view', 'changePassword'], 'allow' => '@']
             ],
+            Controller\QuallificationController::class => [
+                // Give access to "resetPassword", "message" and "setPassword" actions
+                // to anyone.
+                ['actions' => ['resetPassword', 'message', 'setPassword'], 'allow' => '*'],
+                // Give access to "index", "add", "edit", "view", "changePassword" actions to authorized users only.
+                ['actions' => ['index', 'add', 'edit', 'view', 'changePassword'], 'allow' => '@']
+            ],
         ]
     ],
     'service_manager' => [
@@ -133,6 +210,10 @@ return [
             Service\AuthManager::class => Service\Factory\AuthManagerFactory::class,
             Service\UserManager::class => Service\Factory\UserManagerFactory::class,
             Service\CategoryManager::class => Service\Factory\CategoryManagerFactory::class,
+            Service\QualificationManager::class => Service\Factory\QualificationManagerFactory::class,
+            Service\PractitionerManager::class => Service\Factory\PractitionerManagerFactory::class,
+            Service\PracticeManager::class => Service\Factory\PracticeManagerFactory::class,
+            Service\SpecialitiesManager::class => Service\Factory\SpecialitiesManagerFactory::class,
         ],
     ],
     'view_manager' => [

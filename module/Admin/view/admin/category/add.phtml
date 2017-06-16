@@ -53,6 +53,15 @@ $form->prepare();
             <?= $this->formElement($form->get('parent_id')); ?>
             <?= $this->formElementErrors($form->get('parent_id')); ?>                  
         </div>
+        
+       <div class="form-group">
+            <label for="status">Parent</label>            
+            <select class="form-control" name="parent_id" id="parent_id">
+                <option value="0" selected="selected">None</option>
+                <?php echo $categories_html;?>
+            </select>                              
+        </div>         
+                
 
         <div class="form-group">
             <?= $this->formLabel($form->get('status')); ?>
@@ -70,3 +79,12 @@ $form->prepare();
    
 </div>   
 </section>
+
+<script>
+    
+    function getCategories()
+    {
+       
+    }
+    
+</script>

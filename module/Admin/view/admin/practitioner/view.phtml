@@ -1,0 +1,77 @@
+<?php
+$this->headTitle('View Practitioner');
+?>
+
+<?= $this->flashMessenger()->render('error', ['alert', 'alert-warning']); ?>
+<?= $this->flashMessenger()->render('success', ['alert', 'alert-success']); ?>
+<?= $this->flashMessenger()->render('info', ['alert', 'alert-info']); ?>
+<section class="content-header"><h1>View User</h1></section>
+
+<section class="content">
+<div class="row">
+<div class="col-md-6">
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <i class="fa fa-text-width"></i>
+
+              <h3 class="box-title">Details</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+        <table class="table table-striped table-bordered">
+             <tr>
+                <th>ID:</th>
+                <td><?= $this->escapeHtml($practitioner->getId()) ?></th>
+            </tr>
+            <tr>
+                <th>E-mail:</th>
+                <td><?= $this->escapeHtml($practitioner->getEmail()) ?></th>
+            </tr>
+            <tr>
+                <th>Full Name:</th>
+                <td><?= $this->escapeHtml($practitioner->getFirstName()) ?></th>
+            </tr>
+            <tr>
+                <th>Last Name:</th>
+                <td><?= $this->escapeHtml($practitioner->getLastName()) ?></th>
+            </tr>
+
+            <tr>
+                <th>Language:</th>
+                <td><?= $this->escapeHtml($practitioner->getLanguage()) ?></th>
+            </tr>
+            <tr>
+                <th>Phone Number:</th>
+                <td><?= $this->escapeHtml($practitioner->getPhoneNumber()) ?></th>
+            </tr>
+            <tr>
+                <th>Gender:</th>
+                <td><?= $this->escapeHtml($practitioner->getGender()) ?></th>
+            </tr>
+            <tr>
+                <th>Address:</th>
+                <td><?= $this->escapeHtml($practitioner->getAddress()) ?></th>
+            </tr>
+            <tr>
+                <th>Overview:</th>
+                <td><?= $this->escapeHtml($practitioner->getOverview()) ?></th>
+            </tr>
+            <tr>
+                <th>Qualification:</th>
+                <td><?= $this->escapeHtml($practitioner->getQualification()) ?></th>
+            </tr>
+            <tr>
+                <th>Date Created:</th>
+                <td><?= $this->escapeHtml($practitioner->getDateCreated()) ?></th>
+            </tr>
+
+        </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+</div>
+    </section>
+
+

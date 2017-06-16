@@ -7,6 +7,13 @@ use Zend\View\Model\ViewModel;
 use Admin\Entity\Category;
 use Zend\Mvc\MvcEvent;
 use Admin\Form\CategoryForm;
+use Admin\Repository\CategoryRepository;
+
+use Zend\Db\Adapter\Adapter;
+
+use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
+use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
+use Zend\Paginator\Paginator;
 
 /**
  * This controller is responsible for Category management (adding, editing, 
@@ -49,14 +56,29 @@ class CategoryController extends AbstractActionController {
      * This is the default "index" action of the controller. It displays the 
      * list of Category.
      */
-    public function indexAction() {
-        $categories = $this->entityManager->getRepository(Category::class)
-                ->findBy([], ['id' => 'ASC']);
-        //print_r($categories);exit;
+    public function indexAction() {  
+        $page = $this->params()->fromQuery('page', 1);
+        $categories_query = $this->entityManager->getRepository(Category::class)
+                ->getAllCategories();
+        
+       $adapter = new DoctrineAdapter(new ORMPaginator($categories_query, false));
+        $paginator = new Paginator($adapter);
+        $paginator->setDefaultItemCountPerPage(ADMIN_PER_PAGE);        
+        $paginator->setCurrentPageNumber($page);
+        
+        
+        
         return new ViewModel([
-            'Categories' => $categories
+            'Categories' => $paginator
         ]);
     }
+    
+    public function getCategoriesAction()
+    {
+       
+        
+       
+    }        
 
     /**
      * This action displays a page allowing to add a new Category.
@@ -86,9 +108,13 @@ class CategoryController extends AbstractActionController {
                 return $this->redirect()->toRoute('category', ['action' => 'index']);
             }
         }
-
+         $html = $this->entityManager->getRepository(Category::class)
+                    ->getCategories(0,0,0);
+          
+         
         return new ViewModel([
-            'form' => $form
+            'form' => $form,
+            'categories_html' => $html
         ]);
     }
 

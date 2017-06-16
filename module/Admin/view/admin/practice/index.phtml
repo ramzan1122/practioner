@@ -1,0 +1,135 @@
+<?php
+$this->headTitle('Practice');
+//$this->mainMenu()->setActiveItemId('practs');
+//$this->pageBreadcrumbs()->setItems([
+//            'Home'=>$this->url('home'),
+//            'Manage practs'=>$this->url('practs'),
+//            ]);
+?>
+
+
+<?php
+$this->headTitle('Practice');
+//$this->mainMenu()->setActiveItemId('practitioner');
+//$this->pageBreadcrumbs()->setItems([
+//            'Home'=>$this->url('home'),
+//            'Manage practs'=>$this->url('practitioner'),
+//            ]);
+?>
+
+
+
+
+<section class="content-header">
+<h1>Manage Practice</h1>
+<ol class="breadcrumb">
+<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+<li class="active">Here</li>
+</ol>
+</section>
+
+
+<div class="col-sm-12 modal-header">
+<a type="button" href="<?= $this->url('practice', ['action' => 'add']); ?>" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Practice</a>
+</div>
+
+
+<section class="content">
+<div class="row">
+
+<div class="col-xs-12">
+<div class="box">
+<div class="box-header">
+<h3 class="box-title">All Practice's</h3>
+</div>
+<!-- /.box-header -->
+<div class="box-body">
+<div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+
+<thead>
+    <tr role="row">
+        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">ID</th>
+
+        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Name</th>
+
+        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Description</th>
+
+        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Address</th>
+
+        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Languages</th>
+
+        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Phone Number</th>
+
+        <!--<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Logo</th>-->
+    </tr>
+</thead>
+            <tbody>
+
+
+            <?php foreach ($practices as $practice): ?>
+
+            <tr>
+            <td><?= $this->escapeHtml($practice->getId()); ?></td>
+            <td>
+            <a href="<?= $this->url('practice', ['action'=>'view', 'id'=>$practice->getId()]); ?>">
+            <?= $this->escapeHtml($practice->getPracticeName()); ?>
+            </a>
+            </td>
+            <td><?= $this->escapeHtml($practice->getDescription()); ?></a>
+            </td>
+            <td><?= $this->escapeHtml($practice->getAddress()); ?></td>
+            <td><?= $this->escapeHtml($practice->getLanguages()); ?></td>
+            <td><?= $this->escapeHtml($practice->getPhoneNumber()); ?></td>
+
+            <td>
+            <a class="btn btn-info" href="<?= $this->url('practice',
+            ['action'=>'edit', 'id'=>$practice->getId()]); ?>">
+            <span class="glyphicon glyphicon-pencil" ></span> Edit
+            </a>
+            <button onclick="_delete('practice', '<?php echo $practice->getId() ?>')" class="btn btn-danger" href="#">
+            <span class="glyphicon glyphicon-trash" ></span> Delete
+            </button>
+            </td>
+            </tr>
+
+           <?php endforeach; ?>
+            </tbody>
+
+            </table>
+                <div class="row col-sm-12" style="text-align: right">  
+                    <?= $this->paginationControl($practices,
+                    'Sliding',
+                    'admin/partial/paginator', 
+                    array('route' => 'practice')); ?> 
+                 </div>
+        
+        </div>
+    </div>
+
+</div>
+<!-- /.box-body -->
+</div>
+<!-- /.box -->
+
+
+<!-- /.box -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</section>
+<script>
+function _delete(controller, id) {
+var result = confirm("Want to delete?");
+if (result) {
+$.ajax({
+url: "<?= $this->url('practice', ['action' => 'delete']); ?>",
+async: false,
+method: 'POST',
+data: {id: id},
+success: function (result) {
+
+}});
+}
+}
+</script>
